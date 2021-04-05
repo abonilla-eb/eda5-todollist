@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 
 class Todo(models.Model):
     description = models.CharField(max_length=32)
-    done = models.BooleanField()
+    done = models.BooleanField(default=False)
     user_assigned = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
