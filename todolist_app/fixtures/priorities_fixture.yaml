@@ -1,0 +1,29 @@
+- model: todolist_app.priority
+  pk: 1
+  fields:
+    order: 1
+    description: Critical
+
+- model: todolist_app.priority
+  pk: 2
+  fields:
+    order: 2
+    description: High
+
+- model: todolist_app.priority
+  pk: 3
+  fields:
+    order: 3
+    description: Medium
+
+- model: todolist_app.priority
+  pk: 4
+  fields:
+    order: 4
+    description: Low
+
+- model: todolist_app.priority
+  pk: 5
+  fields:
+    order: 5
+    description: Trivial
