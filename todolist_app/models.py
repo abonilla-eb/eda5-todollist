@@ -1,7 +1,22 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
 
-class Asd(models.Model):
-    asd = models.CharField(max_length=12)
+class Todo(models.Model):
+    description = models.CharField(max_length=32)
+    done = models.BooleanField()
+    user_assigned = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+    )
+    priority = models.ForeignKey(
+        'Priority',
+        on_delete=models.CASCADE,
+    )
+
+
+class Priority(models.Model):
+    order = models.SmallIntegerField()
+    description = models.CharField(max_length=32)
