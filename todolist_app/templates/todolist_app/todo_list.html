@@ -1,11 +1,21 @@
 <h1>To Do List</h1>
+<a href="{% url 'create_todo' %}">Add new item</a>
 <ul>
 {% for item in object_list %}
-    {% if item.done %}
-        <li><del>{{ item.description }} - {{ item.priority.description }}</del> ({{ item.user.name }})</li>
-    {% else %}
-        <li>{{ item.description }} - {{ item.priority.description }} ({{ item.user.name }})</li>
-    {% endif %}
+    <li>
+        {% if item.done %}
+            <del>{{ item.description }} - {{ item.priority.description }}</del>
+        {% else %}
+            {{ item.description }} - {{ item.priority.description }}
+        {% endif %}
+        {% if item.done %}
+            ({{ item.user.name}})
+        {% else %}
+            (not assigned)
+        {% endif %}
+        <a href="{% url 'delete_todo' item.id %}">delete</a>
+        <a href="{% url 'update_todo' item.id %}">edit</a>
+    </li>
 {% empty %}
     <li>Nothing to do yet.</li>
 {% endfor %}
