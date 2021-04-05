@@ -18,6 +18,7 @@ from django.urls import path
 from todolist_app.views import (
     TodoListView,
     TodoCreateView,
+    TodoUpdateView,
 )
 
 urlpatterns = [
@@ -34,7 +35,7 @@ urlpatterns = [
     ),
     path(
         'update/<int:todo_id>',
-        TodoListView.as_view(),
+        TodoUpdateView.as_view(),
         name='update_todo',
     ),
     path(

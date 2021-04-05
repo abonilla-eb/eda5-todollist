@@ -2,7 +2,7 @@
 from django.views.generic.list import ListView
 from django.views.generic.edit import (
     CreateView,
-    # UpdateView,
+    UpdateView,
     # DeleteView,
 )
 from .models import Todo
@@ -20,3 +20,8 @@ class TodoCreateView(CreateView):
         'description',
         'priority',
     ]
+
+
+class TodoUpdateView(UpdateView):
+    model = Todo
+    fields = '__all__'
