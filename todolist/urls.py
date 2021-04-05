@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 from todolist_app.views import (
     TodoListView,
     TodoCreateView,
     TodoUpdateView,
     TodoDeleteView,
+    # login_view,
 )
 
 urlpatterns = [
@@ -43,5 +45,10 @@ urlpatterns = [
         'delete/<int:pk>',
         TodoDeleteView.as_view(),
         name='delete_todo',
+    ),
+    path(
+        'accounts/',
+        include('django.contrib.auth.urls'),
+        name='login_view',
     ),
 ]
