@@ -20,3 +20,6 @@ class Todo(models.Model):
 class Priority(models.Model):
     order = models.SmallIntegerField()
     description = models.CharField(max_length=32)
+
+    def __str__(self):
+        return self.description
