@@ -19,6 +19,7 @@ from todolist_app.views import (
     TodoListView,
     TodoCreateView,
     TodoUpdateView,
+    TodoDeleteView,
 )
 
 urlpatterns = [
@@ -39,8 +40,8 @@ urlpatterns = [
         name='update_todo',
     ),
     path(
-        'delete/<int:todo_id>',
-        TodoListView.as_view(),
+        'delete/<int:pk>',
+        TodoDeleteView.as_view(),
         name='delete_todo',
     ),
 ]
