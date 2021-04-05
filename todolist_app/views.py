@@ -29,3 +29,7 @@ class TodoCreateView(CreateView):
 class TodoUpdateView(UpdateView):
     model = Todo
     fields = '__all__'
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse('list_todos')

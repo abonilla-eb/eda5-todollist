@@ -1,7 +1,11 @@
 <h1>To Do List</h1>
 <ul>
 {% for item in object_list %}
-    <li>{{ item.description }} - {{ item.priority.description }} ({{ item.user.name }})</li>
+    {% if item.done %}
+        <li><del>{{ item.description }} - {{ item.priority.description }}</del> ({{ item.user.name }})</li>
+    {% else %}
+        <li>{{ item.description }} - {{ item.priority.description }} ({{ item.user.name }})</li>
+    {% endif %}
 {% empty %}
     <li>Nothing to do yet.</li>
 {% endfor %}

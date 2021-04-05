@@ -34,7 +34,7 @@ urlpatterns = [
         name='create_todo',
     ),
     path(
-        'update/<int:todo_id>',
+        'update/<int:pk>',
         TodoUpdateView.as_view(),
         name='update_todo',
     ),
