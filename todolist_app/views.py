@@ -5,6 +5,7 @@ from django.views.generic.edit import (
     UpdateView,
     # DeleteView,
 )
+from django.urls import reverse
 from .models import Todo
 
 # Create your views here.
@@ -20,6 +21,9 @@ class TodoCreateView(CreateView):
         'description',
         'priority',
     ]
+
+    def get_success_url(self):
+        return reverse('list_todos')
 
 
 class TodoUpdateView(UpdateView):
