@@ -20,6 +20,7 @@ from todolist_app.views import (
     TodoListView,
     TodoCreateView,
     TodoUpdateView,
+    TodoAssignUserView,
     TodoDeleteView,
     todo_done,
 )
@@ -40,6 +41,11 @@ urlpatterns = [
         'update/<int:pk>',
         TodoUpdateView.as_view(),
         name='update_todo',
+    ),
+    path(
+        'assign_user/<int:pk>',
+        TodoAssignUserView.as_view(),
+        name='assign_user_todo',
     ),
     path(
         'done/<int:pk>',

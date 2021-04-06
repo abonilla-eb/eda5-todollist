@@ -32,7 +32,8 @@ DEBUG = os.environ.get(
     False,
 ) is not False
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = eval(f'[{os.environ.get("DJANGO_ALLOWED_HOSTS", "")}]')
 
 # Application definition
 
@@ -134,3 +135,4 @@ STATIC_URL = '/static/'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login'

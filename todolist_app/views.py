@@ -41,6 +41,15 @@ class TodoUpdateView(LoginRequiredMixin, UpdateView):
         return reverse('list_todos')
 
 
+class TodoAssignUserView(LoginRequiredMixin, UpdateView):
+    model = Todo
+    fields = ['user_assigned']
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse('list_todos')
+
+
 class TodoDeleteView(LoginRequiredMixin, DeleteView):
     model = Todo
 

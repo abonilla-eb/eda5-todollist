@@ -15,9 +15,11 @@
         {% endif %}
         <a href="{% url 'delete_todo' item.id %}">delete</a>
         <a href="{% url 'update_todo' item.id %}">edit</a>
+        <a href="{% url 'assign_user_todo' item.id %}">assign</a>
         <a href="{% url 'do_todo' item.id %}">done</a>
     </li>
-{% empty %}
+    {% empty %}
     <li>Nothing to do yet.</li>
-{% endfor %}
+    {% endfor %}
 </ul>
+<a href="{% url 'logout' %}">Logout</a>
