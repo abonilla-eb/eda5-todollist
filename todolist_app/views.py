@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
 from django.views.generic.edit import (
     CreateView,
@@ -12,11 +13,11 @@ from django.shortcuts import redirect
 # Create your views here.
 
 
-class TodoListView(ListView):
+class TodoListView(LoginRequiredMixin, ListView):
     model = Todo
 
 
-class TodoCreateView(CreateView, LoginRequiredMixin):
+class TodoCreateView(LoginRequiredMixin, CreateView):
     model = Todo
     fields = [
         'description',
@@ -31,7 +32,7 @@ class TodoCreateView(CreateView, LoginRequiredMixin):
         return super(TodoCreateView, self).form_valid(form)
 
 
-class TodoUpdateView(UpdateView, LoginRequiredMixin):
+class TodoUpdateView(LoginRequiredMixin, UpdateView):
     model = Todo
     fields = '__all__'
     template_name_suffix = '_update_form'
@@ -40,13 +41,14 @@ class TodoUpdateView(UpdateView, LoginRequiredMixin):
         return reverse('list_todos')
 
 
-class TodoDeleteView(DeleteView, LoginRequiredMixin):
+class TodoDeleteView(LoginRequiredMixin, DeleteView):
     model = Todo
 
     def get_success_url(self):
         return reverse('list_todos')
 
 
+@login_required
 def todo_done(request, pk):
     # self.done = True
     # return reverse('list_todos')
