@@ -9,6 +9,8 @@ docker pull abonillaeb/eda5-todolist
 
 ### Environment variables
 
+Django general environment variables
+
 * DJANGO_SECRET_KEY: Django secret, used for csrf and others
 
   `DJANGO_SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxx`
@@ -20,6 +22,8 @@ docker pull abonillaeb/eda5-todolist
 * DJANGO_ALLOWED_HOSTS: List of allowed hosts in Python format (is `eval`'ed in settings.py)
 
   `DJANGO_ALLOWED_HOSTS=['127.0.0.1', '129.168.1.30']`
+
+Database environment variables (only PostgreSQL)
 
 * DJANGO_DATABASE_HOST: Database host ip or name
 
