@@ -10,8 +10,6 @@ class Todo(models.Model):
     user_assigned = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
-        null=True,
-        blank=True,
     )
     priority = models.ForeignKey(
         'Priority',

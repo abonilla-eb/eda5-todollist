@@ -8,8 +8,8 @@
         {% else %}
             {{ item.description }} - {{ item.priority.description }}
         {% endif %}
-        {% if item.done %}
-            ({{ item.user.name}})
+        {% if item.user_assigned %}
+            ({{ item.user_assigned.username }})
         {% else %}
             (not assigned)
         {% endif %}
