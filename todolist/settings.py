@@ -29,10 +29,14 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get(
     'DJANGO_DEBUG',
-    True,
-)
+    False,
+) is not False
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get(
+    'DJANGO_ALLOWED_HOSTS',
+    '127.0.0.1',
+).split(',')
 
 
 # Application definition
@@ -81,13 +85,15 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+database_host = os.environ.get('DJANGO_DATABASE_HOST', '127.0.0.1')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'eda5-todolist',
         'USER': 'postgres',
         'PASSWORD': 'asd',
-        'HOST': '127.0.0.1',
+        'HOST': database_host,
         'PORT': '5432',
     }
 }
