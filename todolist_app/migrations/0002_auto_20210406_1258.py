@@ -3,6 +3,23 @@
 from django.db import migrations
 
 
+def add_priorities(apps, schema_editor):
+    Priority = apps.get_model("todolist_app", "Priority")
+    data = [
+        ('Critical', 1),
+        ('High', 2),
+        ('Medium', 3),
+        ('Low', 4),
+        ('Trivial', 5),
+    ]
+    for desc, order in data:
+        p = Priority(
+            description=desc,
+            order=order
+        )
+        p.save()
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -10,4 +27,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunPython(add_priorities)
     ]
