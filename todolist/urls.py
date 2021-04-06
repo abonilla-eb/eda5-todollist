@@ -21,7 +21,7 @@ from todolist_app.views import (
     TodoCreateView,
     TodoUpdateView,
     TodoDeleteView,
-    # login_view,
+    todo_done,
 )
 
 urlpatterns = [
@@ -40,6 +40,11 @@ urlpatterns = [
         'update/<int:pk>',
         TodoUpdateView.as_view(),
         name='update_todo',
+    ),
+    path(
+        'done/<int:pk>',
+        todo_done,
+        name='do_todo',
     ),
     path(
         'delete/<int:pk>',

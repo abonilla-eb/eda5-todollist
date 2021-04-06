@@ -7,6 +7,7 @@ from django.views.generic.edit import (
 )
 from django.urls import reverse
 from .models import Todo
+from django.shortcuts import redirect
 
 # Create your views here.
 
@@ -44,3 +45,12 @@ class TodoDeleteView(DeleteView, LoginRequiredMixin):
 
     def get_success_url(self):
         return reverse('list_todos')
+
+
+def todo_done(request, pk):
+    # self.done = True
+    # return reverse('list_todos')
+    done_todo = Todo.objects.get(pk=pk)
+    done_todo.done = True
+    done_todo.save()
+    return redirect('list_todos')

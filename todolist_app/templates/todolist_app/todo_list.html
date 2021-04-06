@@ -15,6 +15,7 @@
         {% endif %}
         <a href="{% url 'delete_todo' item.id %}">delete</a>
         <a href="{% url 'update_todo' item.id %}">edit</a>
+        <a href="{% url 'do_todo' item.id %}">done</a>
     </li>
 {% empty %}
     <li>Nothing to do yet.</li>
