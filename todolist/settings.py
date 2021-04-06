@@ -83,13 +83,16 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 database_host = os.environ.get('DJANGO_DATABASE_HOST', '127.0.0.1')
+database_name = os.environ.get('DJANGO_DATABASE_NAME', 'eda5-todolist')
+database_user = os.environ.get('DJANGO_DATABASE_USER', 'postgres')
+database_pwd = os.environ.get('DJANGO_DATABASE_PASSWORD', 'asd')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'eda5-todolist',
-        'USER': 'postgres',
-        'PASSWORD': 'asd',
+        'NAME': database_name,
+        'USER': database_user,
+        'PASSWORD': database_pwd,
         'HOST': database_host,
         'PORT': '5432',
     }
