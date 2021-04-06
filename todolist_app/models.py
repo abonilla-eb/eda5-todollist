@@ -16,6 +16,9 @@ class Todo(models.Model):
         on_delete=models.CASCADE,
     )
 
+    def __str__(self):
+        return f'{self.description} ({"done" if self.done else "todo"})'
+
 
 class Priority(models.Model):
     order = models.SmallIntegerField()
