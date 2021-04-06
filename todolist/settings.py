@@ -32,12 +32,7 @@ DEBUG = os.environ.get(
     False,
 ) is not False
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = os.environ.get(
-    'DJANGO_ALLOWED_HOSTS',
-    '127.0.0.1',
-).split(',')
-
+ALLOWED_HOSTS = []
 
 # Application definition
 
