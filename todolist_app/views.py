@@ -18,9 +18,8 @@ class TodoListAllView(LoginRequiredMixin, ListView):
     model = Todo
 
 
-class TodoListMineView(LoginRequiredMixin, ListView):
-    model = Todo
-
+# class TodoListMineView(LoginRequiredMixin, ListView):
+class TodoListMineView(TodoListAllView):
     def get_queryset(self):
         self.queryset = Todo.objects.filter(user_assigned=self.request.user)
         return super(TodoListMineView, self).get_queryset()

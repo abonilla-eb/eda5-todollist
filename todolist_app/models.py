@@ -5,6 +5,9 @@ from django.contrib.auth import get_user_model
 
 
 class Todo(models.Model):
+    class Meta:
+        ordering = ['priority']
+
     description = models.CharField(max_length=32)
     done = models.BooleanField(default=False)
     user_assigned = models.ForeignKey(
@@ -21,6 +24,9 @@ class Todo(models.Model):
 
 
 class Priority(models.Model):
+    class Meta:
+        ordering = ['order']
+
     order = models.SmallIntegerField()
     description = models.CharField(max_length=32)
 
