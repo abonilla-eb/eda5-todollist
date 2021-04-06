@@ -9,6 +9,7 @@ from django.views.generic.edit import (
 from django.urls import reverse
 from .models import Todo
 from django.shortcuts import redirect
+from .forms import TodoCreateForm
 
 # Create your views here.
 
@@ -18,11 +19,8 @@ class TodoListView(LoginRequiredMixin, ListView):
 
 
 class TodoCreateView(LoginRequiredMixin, CreateView):
+    form_class = TodoCreateForm
     model = Todo
-    fields = [
-        'description',
-        'priority',
-    ]
 
     def get_success_url(self):
         return reverse('list_todos')
