@@ -22,4 +22,11 @@
     <li>Nothing to do yet.</li>
     {% endfor %}
 </ul>
+{% if '/all' in request.path %}
+<a href="{% url 'list_todos' %}">Show mine</a>
+{% else %}
+<a href="{% url 'list_all_todos' %}">Show all</a>
+{% endif %}
+<br/>
+<br/>
 <a href="{% url 'logout' %}">Logout</a>

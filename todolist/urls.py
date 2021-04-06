@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from todolist_app.views import (
-    TodoListView,
+    TodoListAllView,
+    TodoListMineView,
     TodoCreateView,
     TodoUpdateView,
     TodoAssignUserView,
@@ -29,8 +30,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
     path(
+        'all/',
+        TodoListAllView.as_view(),
+        name='list_all_todos',
+    ),
+    path(
         '',
-        TodoListView.as_view(),
+        TodoListMineView.as_view(),
         name='list_todos',
     ),
     path(
