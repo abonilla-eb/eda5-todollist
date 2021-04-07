@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+    db:
+        image: postgres:12-alpine
+        networks:
+            - todolist-net
+        volumes:
+            - /var/lib/postgresql/data
+        environment:
+            - POSTGRES_PASSWORD=asd
+            - POSTGRES_DB=eda5-todolist
+    todolist:
+        build: .
+        ports:
+            - "8000:8000"
+        networks:
+            - todolist-net
+        depends_on:
+            - db
+        environment:
+            - DJANGO_SECRET_KEY
+            - DJANGO_DATABASE_HOST=db
+            - DJANGO_DATABASE_NAME=eda5-todolist
+            - DJANGO_DATABASE_USER=postgres
+            - DJANGO_DATABASE_PASSWORD=asd
+            # - DJANGO_ALLOWED_HOSTS
+            - DJANGO_DEBUG=1
+        entrypoint: /todolist/migrate_and_run.sh
+networks:
+    todolist-net:
