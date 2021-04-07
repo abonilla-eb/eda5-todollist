@@ -7,7 +7,7 @@ services:
         volumes:
             - /var/lib/postgresql/data
         environment:
-            - POSTGRES_PASSWORD=asd
+            - POSTGRES_PASSWORD=dbpasswd
             - POSTGRES_DB=eda5-todolist
     todolist:
         build: .
@@ -22,7 +22,7 @@ services:
             - DJANGO_DATABASE_HOST=db
             - DJANGO_DATABASE_NAME=eda5-todolist
             - DJANGO_DATABASE_USER=postgres
-            - DJANGO_DATABASE_PASSWORD=asd
+            - DJANGO_DATABASE_PASSWORD=dbpasswd
             # - DJANGO_ALLOWED_HOSTS
             - DJANGO_DEBUG=1
         entrypoint: /todolist/migrate_and_run.sh
