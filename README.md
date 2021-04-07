@@ -1,5 +1,13 @@
 # To Do List for EDA 5
 
+## Docker compose
+
+To start with docker-compose it's required to set the DJANGO_SECRET_KEY environment variable
+```
+export DJANGO_SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxx
+docker-compose up
+```
+
 ## Docker image
 
 To pull the image use
